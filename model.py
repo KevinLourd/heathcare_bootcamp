@@ -15,7 +15,8 @@ def model(X_train, y_train, X_test):
     clf = Pipeline([('imputer', Imputer(strategy='most_frequent')),
                 ('scaler', StandardScaler()),
                 ('clf', AdaBoostClassifier(RandomForestClassifier(n_estimators=300, max_depth=3, n_jobs=-1), n_estimators=20))
-                ])    clf.fit(X_train, y_train)
+                ])
+    clf.fit(X_train, y_train)
     y_pred = clf.predict(X_test)
     y_score = clf.predict_proba(X_test)
     return y_pred, y_score
