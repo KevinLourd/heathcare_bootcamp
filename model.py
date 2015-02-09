@@ -11,12 +11,12 @@ def model(X_train, y_train, X_test):
                                330, 292, 262, 226, 270, 146,  28, 334, 331, 329, 113, 357, 341,
                                485,  60,  61, 272, 360,  62, 283, 306, 291,  94, 111, 265, 170,
                                356, 345,  50, 333, 206, 353, 114, 337])
-                               X_train = X_train[columnSelected]
-                               clf = Pipeline([('imputer', Imputer(strategy='most_frequent')),
-                                               ('scaler', StandardScaler()),
-                                               ('clf', AdaBoostClassifier(RandomForestClassifier(n_estimators=300, max_depth=3, n_jobs=-1), n_estimators=20))
-                                               ])
-                               clf.fit(X_train, y_train)
-                               y_pred = clf.predict(X_test)
-                               y_score = clf.predict_proba(X_test)
-                               return y_pred, y_score
+    X_train = X_train[columnSelected]
+    clf = Pipeline([('imputer', Imputer(strategy='most_frequent')),
+                   ('scaler', StandardScaler()),
+                   ('clf', AdaBoostClassifier(RandomForestClassifier(n_estimators=300, max_depth=3, n_jobs=-1), n_estimators=20))
+                   ])
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    y_score = clf.predict_proba(X_test)
+    return y_pred, y_score
